@@ -159,6 +159,8 @@ class BaseMLP(sklearn.base.BaseEstimator):
             self.learning_rule = Momentum(learning_momentum)
         elif learning_rule == 'rmsprop':
             self.learning_rule = RMSProp()
+        elif not isinstance(learning_rule,str):
+            self.learning_rule=learning_rule
         else:
             raise NotImplementedError(
                 "Learning rule type `%s` is not supported." % learning_rule)
