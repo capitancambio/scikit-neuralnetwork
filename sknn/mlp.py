@@ -159,6 +159,8 @@ class BaseMLP(sklearn.base.BaseEstimator):
             self.learning_rule = Momentum(learning_momentum)
         elif learning_rule == 'rmsprop':
             self.learning_rule = RMSProp()
+        #accept the learning rule if it's not a string
+        #otherwise it fails when cloning classifiers during cross validation
         elif not isinstance(learning_rule,str):
             self.learning_rule=learning_rule
         else:
